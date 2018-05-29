@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<div id="tableid" >
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p >
+  <strong>Description:</strong>
+  <%= @movie.description %>
+</p>
+
+  <p><%= link_to 'Edit', edit_movie_path(@movie) %> |
+    <%= link_to 'Back', movies_path %></p>
+<ul>
+  <% @movie.comments.each do |comment|%>
+    <li><%=comment.text %></li>
+    <%end%>
+
+</ul>
+  <form action="comment/create">
+    Comment:<br>
+    <input type="text" name="text" ><br>
+    <input type="hidden" name="movie_id" value="<%= @movie.id%>" ><br>
+
+    <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+
+
+<script>
+    $("#newc").click(function () {
+        var pur=
+        var neww = " <form action=\"/comment/create\">\n" +
+            "  Comment:<br>\n" +
+            "  <input type=\"text\" name=\"text\" ><br>\n" +
+            "  <input type=\"hidden\" name=\"movie_id\" value="+pur+" ><br>\n" +
+
+            "  <input type=\"submit\" value=\"Submit\">\n" +
+            "</form> "
+        var newtext = " Insert Yoyr comment:<br>\n" +"  <input type=\"number\" name=\"lastname\">"
+        $('#tableid').append(neww);
+
+
+    })
+</script>
